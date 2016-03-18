@@ -1,20 +1,27 @@
+var back=document.querySelector('#background');
 var color = document.querySelector('.container');
+var circle1=document.querySelector('#movetext');
 
 
 
-window.onload=function(){
+
+  window.onload=function(){
   console.log("Fully loaded");
+
+  back.style.backgroundImage="url('pauldouglas_1454303681_Medterranean Nasa.GIF')";
 
   var sub=document.querySelector("#submit");
   sub.addEventListener('click',function(evt){
-    evt.preventDefault();
-    console.log("click");
+  evt.preventDefault();
+  console.log("click");
 
     var city =document.querySelector("#city").value;
     var state=document.querySelector("#state").value;
 
     var query = "http://api.wunderground.com/api/" + weatherkey + "/forecast10day/q/" + state + "/" + city + ".json";
     console.log("submit "+query);
+
+    var somequery="http://api.wunderground.com/api/" +weatherkey + "/conditions/q/" + state +"/" +city +".json";
 
     // colordiv.innerHTML="";
 
@@ -178,6 +185,8 @@ window.onload=function(){
 
 
 
+
+
           var templateSource = document.getElementById('character_template').innerHTML;
           var template =Handlebars.compile(templateSource);
           for(var j=0;j<7;j++){
@@ -189,11 +198,72 @@ window.onload=function(){
             var drop = document.createElement('div');
             drop.classList.add("day"); // Applies CSS to the data
             drop.innerHTML=html;
+            console.log(response.forecast.simpleforecast.forecastday[j].conditions);
+            //changing color for each div according to the weather
+            if (response.forecast.simpleforecast.forecastday[j].conditions=="Clear"){
+              drop.style.backgroundColor ='#c6e2ff';
+              back.style.backgroundImage="vwzPa80.gif";
+              console.log(back);
+            }
+            if (response.forecast.simpleforecast.forecastday[j].conditions=="Rain"){
+              drop.style.backgroundColor ='#00c5ff';
+              back.style.backgroundImage="HD-Rain-Desktop-Background.jpg";
+
+            }
+            if (response.forecast.simpleforecast.forecastday[j].conditions=="Cloudy"){
+              drop.style.backgroundColor ='#7c817f';
+              back.innerHTML="<img src='Cloudy-Day.jpg'>";
+
+            }
+            if (response.forecast.simpleforecast.forecastday[j].conditions=="Snow Showers"){
+              drop.style.backgroundColor ='#c0d6e4';
+              // drop.style.color ='black';
+            }
+            if (response.forecast.simpleforecast.forecastday[j].conditions=="Chance of Rain"){
+              drop.style.backgroundColor ='#9ce6fb';
+            }
+            if (response.forecast.simpleforecast.forecastday[j].conditions=="Partly Cloudy"){
+              drop.style.backgroundColor ='#c0c0c0';
+              //back.style.backgroundImage="vwzPa80.gif";
+              document.body.style.backgroundImage = "url('vwzPa80.gif')";
+            }
+
+            if (response.forecast.simpleforecast.forecastday[j].conditions=="Snow"){
+              drop.style.backgroundColor ='#c0d6e4';
+            }
+
+
             display.appendChild(drop);
             console.log('newelement');
-          }
 
-        }); //CLOSING EVENT LISTENER
+
+
+          }//end fol loop
+
+
+        }); //end of ajax
+
+
+        $.ajax({
+        url: somequery,
+        }).done(function(response){
+        console.log(response);
+        console.log(response.current_observation.temperature_string);
+        var newtemplateSource = document.getElementById('char_template').innerHTML;
+        var template1 =Handlebars.compile(newtemplateSource);
+        var display1 = document.querySelector("#head");
+        console.log(display1);
+        var html1=template1(response.current_observation);
+        display1.innerHTML = html1;
+        console.log(html1);
+
+
+      });//AJAX
+
+
+
+
+
 
   }); //CLOSING EVENT LISTERNER
 

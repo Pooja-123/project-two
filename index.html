@@ -5,7 +5,7 @@
     <title>Weather Forecast</title>
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
   </head>
-  <body>
+  <body id="background">
     <h2 id ="forecast">Weather Forecast</h2>
     <form>
         <label>
@@ -16,12 +16,14 @@
       </form>
 
       <div class ="container"></div>
+      <!-- <div id ="background" class="stretch"></div> -->
 
       <script id="character_template" type="text/x-handlebars-template">
-        <p id ="week">weekday: {{date.weekday}}</p>
-        <p>Month: {{date.monthname}}</p>
+        <p id ="week">{{date.weekday}}</p>
+        <p>High Temperature: {{high.fahrenheit}}</p>
+        <p>Low Temperature: {{low.fahrenheit}}</p>
         <p>Humidity: {{avehumidity}}</p>
-        <p>Conditions:{{conditions}}</p>
+        <p>{{conditions}}</p>
         <p><img src={{icon_url}}></p>
 
         <!-- <p>Thursday: {{Thursday}}</p>
@@ -29,6 +31,15 @@
         <p>Saturday: {{saturday}}</p> -->
     </script>
     <div id="data"></div>
+
+    <script id="char_template" type="text/x-handlebars-template">
+      <p id ="temperature">Currently{{temperature_string}}</p>
+      <!-- <p><img src={{image.url}}></p> -->
+    </script>
+    <div id="head"></div>
+
+
+
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
