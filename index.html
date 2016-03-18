@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <h3>Weather Forecast</h3>
+    <h2 id ="forecast">Weather Forecast</h2>
     <form>
         <label>
           <input type="text" id="city" name="city" placeholder="city"></input>
@@ -14,13 +14,15 @@
         </label>
         <button id="submit">Search</button>
       </form>
-        <!-- <img id ="wrap"src=china.jpg></img> -->
+
+      <div class ="container"></div>
+
       <script id="character_template" type="text/x-handlebars-template">
-        <p>weekday: {{date.weekday}}</p>
+        <p id ="week">weekday: {{date.weekday}}</p>
         <p>Month: {{date.monthname}}</p>
-        <p>year: {{year}}</p>
-        <p>fcttext_metric:{{fcttext_metric}}</p>
-        <p><img src={{period.icon_url}}/></p>
+        <p>Humidity: {{avehumidity}}</p>
+        <p>Conditions:{{conditions}}</p>
+        <p><img src={{icon_url}}></p>
 
         <!-- <p>Thursday: {{Thursday}}</p>
         <p>Friday: {{Friday}}</p>
