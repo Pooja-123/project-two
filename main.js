@@ -9,6 +9,7 @@ var circle1=document.querySelector('#movetext');
   console.log("Fully loaded");
 
   back.style.backgroundImage="url('pauldouglas_1454303681_Medterranean Nasa.GIF')";
+  back.style.backgroundSize="cover";
 
   var sub=document.querySelector("#submit");
   sub.addEventListener('click',function(evt){
@@ -202,25 +203,27 @@ var circle1=document.querySelector('#movetext');
             //changing color for each div according to the weather
             if (response.forecast.simpleforecast.forecastday[j].conditions=="Clear"){
               drop.style.backgroundColor ='#c6e2ff';
-              back.style.backgroundImage="vwzPa80.gif";
+              document.body.style.backgroundImage ="url('vwzPa80.gif')";
               console.log(back);
             }
             if (response.forecast.simpleforecast.forecastday[j].conditions=="Rain"){
               drop.style.backgroundColor ='#00c5ff';
-              back.style.backgroundImage="HD-Rain-Desktop-Background.jpg";
+              document.body.style.backgroundImage = "url('vwzPa80.gif')";
 
             }
             if (response.forecast.simpleforecast.forecastday[j].conditions=="Cloudy"){
               drop.style.backgroundColor ='#7c817f';
-              back.innerHTML="<img src='Cloudy-Day.jpg'>";
+              document.body.style.backgroundImage = "url('vwzPa80.gif')";
 
             }
             if (response.forecast.simpleforecast.forecastday[j].conditions=="Snow Showers"){
               drop.style.backgroundColor ='#c0d6e4';
+              document.body.style.backgroundImage = "url('vwzPa80.gif')";
               // drop.style.color ='black';
             }
             if (response.forecast.simpleforecast.forecastday[j].conditions=="Chance of Rain"){
               drop.style.backgroundColor ='#9ce6fb';
+              document.body.style.backgroundImage = "url('vwzPa80.gif')";
             }
             if (response.forecast.simpleforecast.forecastday[j].conditions=="Partly Cloudy"){
               drop.style.backgroundColor ='#c0c0c0';
@@ -230,6 +233,7 @@ var circle1=document.querySelector('#movetext');
 
             if (response.forecast.simpleforecast.forecastday[j].conditions=="Snow"){
               drop.style.backgroundColor ='#c0d6e4';
+              document.body.style.backgroundImage = "url('vwzPa80.gif')";
             }
 
 
